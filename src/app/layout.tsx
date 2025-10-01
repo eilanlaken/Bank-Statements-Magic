@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Providers from "@/components/Providers";
+import NavbarAccount from "@/components/NavbarAccount";
 
 export const metadata: Metadata = {
   title: "Bank Statements Magic",
@@ -15,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="page-container">
-          <Navbar />
-          <main className="main">{children}</main>
-          <Footer />
-        </div>
+        <Providers>
+          <div className="page-container">
+            <Navbar />
+            <main className="main">{children}</main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );
@@ -32,10 +36,11 @@ function Navbar() {
         Bank Statements Magic
       </Link>
       <div className="navbar-right">
-        <span className="credit">Credits: 10</span>
+        {/* <span className="credit">Tokens: 10</span>
         <Link href="/Pricing">Pricing</Link>
         <Link href="/documents">My Documents</Link>
-        <button className="login-btn">Login</button>
+        <button className="login-btn">Login</button> */}
+        <NavbarAccount />
       </div>
     </nav>
   );

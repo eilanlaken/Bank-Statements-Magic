@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { PDFDocument } from "pdf-lib";
+import CSVList from "./CSVList";
+import { FaFileCsv } from "react-icons/fa6";
 
 export default function PDFConverter() {
   const [error, setError] = useState<string>("");
   const [numPages, setNumPages] = useState<number>(0);
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [csvData, setCsvData] = useState<string | null>(null);
+  const [csvList, setCsvList] = useState<string[]>([]);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -29,13 +31,11 @@ export default function PDFConverter() {
       setError(() => `PDF Converter accepts PDF files only.`);
       setFile(null);
       setNumPages(0);
-      setCsvData(null);
       return;
     }
 
     setError("");
     setFile(file);
-    setCsvData(null);
     const arrayBuffer = await file.arrayBuffer();
     const pdfDoc = await PDFDocument.load(arrayBuffer);
     setNumPages(pdfDoc.getPageCount());
@@ -63,7 +63,7 @@ export default function PDFConverter() {
     }
 
     const csvText = await res.text();
-    setCsvData(csvText);
+    setCsvList((prev) => [...prev, "somefilename"]); // will be given from the server
   };
 
   return (
@@ -96,12 +96,16 @@ export default function PDFConverter() {
       >
         {file && (
           <button className="convert-btn" onClick={handleSubmit}>
+            <FaFileCsv size={20} style={{ marginRight: 8 }} />
             Convert to CSV
           </button>
         )}
         {numPages > 0 && <div>Cost: {numPages} tokens</div>}
         {error && <div className="error">Error: {error}</div>}
       </div>
+
+      {/* CSV list */}
+      {csvList.length > 0 && <CSVList items={csvList} />}
     </div>
   );
 }
