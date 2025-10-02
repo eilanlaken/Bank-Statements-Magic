@@ -36,10 +36,6 @@ function Navbar() {
         Bank Statements Magic
       </Link>
       <div className="navbar-right">
-        {/* <span className="credit">Tokens: 10</span>
-        <Link href="/Pricing">Pricing</Link>
-        <Link href="/documents">My Documents</Link>
-        <button className="login-btn">Login</button> */}
         <NavbarAccount />
       </div>
     </nav>
