@@ -38,6 +38,9 @@ export default function Welcome() {
       <ul style={{ listStyle: "none", padding: 0, marginBottom: "2rem" }}>
         <div
           style={{
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
             backgroundColor: "#f5f5f5",
             padding: "1rem 1.5rem",
             borderRadius: "8px",
@@ -58,6 +61,9 @@ export default function Welcome() {
 
         <div
           style={{
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
             backgroundColor: "#f5f5f5",
             padding: "1rem 1.5rem",
             borderRadius: "8px",
@@ -67,7 +73,8 @@ export default function Welcome() {
         >
           <li style={bulletStyle}>
             <GiToken style={{ ...iconStyle, color: "gold" }} />
-            You get 10 free tokens to start converting immediately
+            You get 10 free tokens so you can start converting{" "}
+            <b>immediately</b>
           </li>
         </div>
         <AiOutlineArrowDown
@@ -76,6 +83,9 @@ export default function Welcome() {
 
         <div
           style={{
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
             backgroundColor: "#f5f5f5",
             padding: "1rem 1.5rem",
             borderRadius: "8px",
@@ -98,6 +108,9 @@ export default function Welcome() {
         />
         <div
           style={{
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center",
             backgroundColor: "#f5f5f5",
             padding: "1rem 1.5rem",
             borderRadius: "8px",
@@ -107,8 +120,7 @@ export default function Welcome() {
         >
           <li style={bulletStyle}>
             <MdOutlineShoppingCart style={{ ...iconStyle, color: "#4CAF50" }} />
-            If you need more, you can buy tokens. Pay only for what you need,
-            <b>no subscriptions</b>
+            Buy tokens, <b>no subscriptions</b>
           </li>
         </div>
       </ul>
